@@ -1594,7 +1594,7 @@ class DOMHTMLReviewsParser(DOMParserBase):
                     ),
                     Rule(
                         key='helpful',
-                        extractor=Path('.//div[@class="text-muted"]/text()[1]')
+                        extractor=Path('.//div[@class="text-muted"]/text()[0]') #was [1]
                     ),
                     Rule(
                         key='title',
