@@ -1590,7 +1590,7 @@ class DOMHTMLReviewsParser(DOMParserBase):
                 rules=[
                     Rule(
                         key='text',
-                        extractor=Path('.//div[@class="text"]/text()') #old: extractor=Path('.//div[@class="text"]//text()') 
+                        extractor=Path('.//div[@class="text"]//text()')
                     ),
                     Rule(
                         key='helpful',
@@ -1602,7 +1602,7 @@ class DOMHTMLReviewsParser(DOMParserBase):
                     ),
                     Rule(
                         key='author',
-                        extractor=Path('.//span[@class="display-name-link"]/a/@href')
+                        extractor=Path('.//span[@class="display-name-link"]/text()') #extractor=Path('.//span[@class="display-name-link"]/a/@href')
                     ),
                     Rule(
                         key='date',
