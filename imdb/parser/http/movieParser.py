@@ -1598,7 +1598,7 @@ class DOMHTMLReviewsParser(DOMParserBase):
                     ),
                     Rule(
                         key='title',
-                        extractor=Path('.//div[@class="title"]//text()')
+                        extractor=Path('.//a[@class="title"]//text()') #extractor=Path('.//div[@class="title"]//text()')
                     ),
                     Rule(
                         key='author',
