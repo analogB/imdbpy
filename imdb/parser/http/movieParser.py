@@ -1610,7 +1610,7 @@ class DOMHTMLReviewsParser(DOMParserBase):
                     ),
                     Rule(
                         key='rating',
-                        extractor=Path('.//span[@class="point-scale"]/preceding-sibling::span[1]/text()')
+                        extractor=Path('.//span[@class="point-scale"]/preceding-sibling::span/text()') #extractor=Path('.//span[@class="point-scale"]/preceding-sibling::span[1]/text()')
                     )
                 ],
                 transform=lambda x: ({
