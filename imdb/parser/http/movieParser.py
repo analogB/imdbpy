@@ -1634,7 +1634,6 @@ class DOMHTMLReviewsParser(DOMParserBase):
             else:
                 review['rating'] = None
 
-            print(review['helpful']) #testing to see if this is post proc issue
             if review.get('helpful') and len(review['helpful']) == 2:
                 review['not_helpful'] = review['helpful'][1] - review['helpful'][0]
                 review['helpful'] = review['helpful'][0]
