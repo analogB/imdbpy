@@ -1629,11 +1629,12 @@ class DOMHTMLReviewsParser(DOMParserBase):
 
     def postprocess_data(self, data):
         for review in data.get('reviews', []):
-            if review.get('rating') and len(review['rating']) >= 1:
-                review['rating'] = int(review['rating'])
+            if review.get('rating') and len(review['rating']) >= 1: #used to be ==2
+                review['rating'] = int(review['rating']) # used to be ['rating'][0]...removed the [0] since its a 10 pt scale
             else:
                 review['rating'] = None
 
+            print(review['helpful']) #testing to see if this is post proc issue
             if review.get('helpful') and len(review['helpful']) == 2:
                 review['not_helpful'] = review['helpful'][1] - review['helpful'][0]
                 review['helpful'] = review['helpful'][0]
