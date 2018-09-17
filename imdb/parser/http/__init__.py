@@ -37,8 +37,9 @@ from imdb.utils import analyze_title
 from imdb._exceptions import IMDbDataAccessError, IMDbParserError
 
 
-from selenium import webdriver
-import time
+from selenium import webdriver  #new BR
+import time                     #new BR
+import phantomjs                #new BR
 
 from . import (
     companyParser,
