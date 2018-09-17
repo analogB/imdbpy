@@ -523,7 +523,7 @@ class IMDbHTTPAccessSystem(IMDbBase):
         return self.mProxy.soundtrack_parser.parse(cont)
 
     def get_movie_reviews(self, movieID):
-        url = self.urls['movie_main'] % movieID + 'reviews
+        url = self.urls['movie_main'] % movieID + 'reviews'
         cont = self._retrieve(url) # cont = self._retrieve(self.urls['movie_main'] % movieID + 'reviews?count=9999999&start=0')
              
         driver = webdriver.PhantomJS()
