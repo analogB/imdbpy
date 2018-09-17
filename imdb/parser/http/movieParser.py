@@ -1594,7 +1594,7 @@ class DOMHTMLReviewsParser(DOMParserBase):
                     ),
                     Rule(
                         key='helpful',
-                        extractor=Path('.//div[@class="text-muted"]//text()[1]') #extractor=Path('.//div[@class="text-muted"]/text()[1]')
+                        extractor=Path('.//div[@class="text-muted"]/text()[1]')
                     ),
                     Rule(
                         key='title',
@@ -1630,6 +1630,8 @@ class DOMHTMLReviewsParser(DOMParserBase):
     def postprocess_data(self, data):
         for review in data.get('reviews', []):
             if review.get('rating') and len(review['rating']) == 2:
+                review['rating'] = int(review['rating'][0:1])
+            elif review.get('rating') and len(review['rating']) == 1:
                 review['rating'] = int(review['rating'][0])
             else:
                 review['rating'] = None
