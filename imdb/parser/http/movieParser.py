@@ -1590,7 +1590,7 @@ class DOMHTMLReviewsParser(DOMParserBase):
                 rules=[
                     Rule(
                         key='text',
-                        extractor=Path('.//div[@class="text"]//text()')
+                        extractor=Path('.//div[@class="text"]/text()') #old: extractor=Path('.//div[@class="text"]//text()') 
                     ),
                     Rule(
                         key='helpful',
