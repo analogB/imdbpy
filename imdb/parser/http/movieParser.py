@@ -1602,7 +1602,7 @@ class DOMHTMLReviewsParser(DOMParserBase):
                     ),
                     Rule(
                         key='author',
-                        extractor=Path('.//span[@class="display-name-link"]/text()') #extractor=Path('.//span[@class="display-name-link"]/a/@href')
+                        extractor=Path('.//span[@class="display-name-link"]/a/@href')
                     ),
                     Rule(
                         key='date',
