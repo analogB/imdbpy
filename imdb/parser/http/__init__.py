@@ -529,7 +529,7 @@ class IMDbHTTPAccessSystem(IMDbBase):
         
         while driver.find_elements_by_css_selector('.ipl-load-more__button'):
             driver.find_element_by_css_selector('.ipl-load-more__button').click()
-        return self.mProxy.reviews_parser.parse(cont)
+        return driver.mProxy.reviews_parser.parse(cont)
 
     def get_movie_critic_reviews(self, movieID):
         cont = self._retrieve(self.urls['movie_main'] % movieID + 'criticreviews')
