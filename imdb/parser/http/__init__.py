@@ -18,7 +18,6 @@
 """
 This package provides the IMDbHTTPAccessSystem class used to access IMDb's data
 through the web interface.
-
 The :func:`imdb.IMDb` function will return an instance of this class when
 called with the ``accessSystem`` argument is set to "http" or "web"
 or "html" (this is the default).
@@ -35,10 +34,6 @@ from imdb import PY2
 from imdb import IMDbBase
 from imdb.utils import analyze_title
 from imdb._exceptions import IMDbDataAccessError, IMDbParserError
-
-
-from selenium import webdriver  #new BR
-import time                     #new BR
 
 from . import (
     companyParser,
@@ -357,7 +352,6 @@ class IMDbHTTPAccessSystem(IMDbBase):
 
     def set_proxy(self, proxy):
         """Set the web proxy to use.
-
         It should be a string like 'http://localhost:8080/'; if the
         string is empty, no proxy will be used.
         If set, the value of the environment variable HTTP_PROXY is
@@ -523,15 +517,7 @@ class IMDbHTTPAccessSystem(IMDbBase):
         return self.mProxy.soundtrack_parser.parse(cont)
 
     def get_movie_reviews(self, movieID):
-        #url = self.urls['movie_main'] % movieID + 'reviews'
-        #cont = self._retrieve(url) #
-        cont = self._retrieve(self.urls['movie_main'] % movieID + 'reviews?count=9999999&start=0')     
-        #self.driver = webdriver.PhantomJS()
-        #self.driver.get(url)
-       
-        #while self.driver.find_elements_by_css_selector('.ipl-load-more__button'):
-            #self.driver.find_element_by_css_selector('.ipl-load-more__button').click()
-       
+        cont = self._retrieve(self.urls['movie_main'] % movieID + 'reviews?count=9999999&start=0')
         return self.mProxy.reviews_parser.parse(cont)
 
     def get_movie_critic_reviews(self, movieID):
