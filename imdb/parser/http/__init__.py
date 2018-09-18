@@ -35,6 +35,10 @@ from imdb import IMDbBase
 from imdb.utils import analyze_title
 from imdb._exceptions import IMDbDataAccessError, IMDbParserError
 
+from selenium import webdriver
+import time
+import phantomjs
+
 from . import (
     companyParser,
     movieParser,
@@ -517,7 +521,15 @@ class IMDbHTTPAccessSystem(IMDbBase):
         return self.mProxy.soundtrack_parser.parse(cont)
 
     def get_movie_reviews(self, movieID):
-        cont = self._retrieve(self.urls['movie_main'] % movieID + 'reviews?count=9999999&start=0')
+        url = self.urls['movie_main'] % movieID + 'reviews'
+        cont = self._retrieve(url) # cont = self._retrieve(self.urls['movie_main'] % movieID + 'reviews?count=9999999&start=0')
+             
+        #cont = self._retrieve(self.urls['movie_main'] % movieID + 'reviews?count=9999999&start=0')
+        self.driver = webdriver.PhantomJS()
+        self.driver.get(url)
+        
+        while self.driver.find_elements_by_css_selector('.ipl-load-more__button'):
+            self.driver.find_element_by_css_selector('.ipl-load-more__button').click()
         return self.mProxy.reviews_parser.parse(cont)
 
     def get_movie_critic_reviews(self, movieID):
