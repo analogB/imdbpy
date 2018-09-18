@@ -37,7 +37,6 @@ from imdb._exceptions import IMDbDataAccessError, IMDbParserError
 
 from selenium import webdriver
 import time
-import phantomjs
 
 from . import (
     companyParser,
