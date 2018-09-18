@@ -524,7 +524,7 @@ class IMDbHTTPAccessSystem(IMDbBase):
         cont = self._retrieve(url) # cont = self._retrieve(self.urls['movie_main'] % movieID + 'reviews?count=9999999&start=0')
              
         #cont = self._retrieve(self.urls['movie_main'] % movieID + 'reviews?count=9999999&start=0')
-        driver = self.webdriver.PhantomJSexecutable_path="anaconda3/lib/python3.6/site-packages/selenium/webdriver/phantomjs")
+        driver = webdriver.PhantomJS(executable_path="anaconda3/lib/python3.6/site-packages/selenium/webdriver/phantomjs")
         #driver.get(url)
         
         #while self.driver.find_elements_by_css_selector('.ipl-load-more__button'):
