@@ -524,7 +524,7 @@ class IMDbHTTPAccessSystem(IMDbBase):
         cont = self._retrieve(url) # cont = self._retrieve(self.urls['movie_main'] % movieID + 'reviews?count=9999999&start=0')
              
         #cont = self._retrieve(self.urls['movie_main'] % movieID + 'reviews?count=9999999&start=0')
-        driver = webdriver.Chrome()
+        driver = webdriver.Chrome("/Users/brad/Downloads/chromedriver")
         driver.get(url)
         
         while driver.find_elements_by_css_selector('.ipl-load-more__button'):
