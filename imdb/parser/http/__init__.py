@@ -526,11 +526,11 @@ class IMDbHTTPAccessSystem(IMDbBase):
         url = self.urls['movie_main'] % movieID + 'reviews'
         cont = self._retrieve(url) # cont = self._retrieve(self.urls['movie_main'] % movieID + 'reviews?count=9999999&start=0')
              
-        driver = webdriver.PhantomJS()
-        driver.get(url)
+        self.driver = webdriver.PhantomJS()
+        self.driver.get(url)
         
-        while driver.find_elements_by_css_selector('.ipl-load-more__button'):
-            driver.find_element_by_css_selector('.ipl-load-more__button').click()
+        while self.driver.find_elements_by_css_selector('.ipl-load-more__button'):
+            self.driver.find_element_by_css_selector('.ipl-load-more__button').click()
        
         return self.mProxy.reviews_parser.parse(cont)
 
