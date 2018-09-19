@@ -521,15 +521,18 @@ class IMDbHTTPAccessSystem(IMDbBase):
 
     def get_movie_reviews(self, movieID):
         url = self.urls['movie_main'] % movieID + 'reviews'
-        cont = self._retrieve(url) # cont = self._retrieve(self.urls['movie_main'] % movieID + 'reviews?count=9999999&start=0')
-             
-        #cont = self._retrieve(self.urls['movie_main'] % movieID + 'reviews?count=9999999&start=0')
         driver = webdriver.Chrome("/Users/brad/Downloads/chromedriver")
         driver.get(url)
         
         while driver.find_elements_by_css_selector('.ipl-load-more__button'):
             driver.find_element_by_css_selector('.ipl-load-more__button').click()
-        return driver.mProxy.reviews_parser.parse(cont)
+        
+        
+        cont = driver._retrieve(url) # cont = self._retrieve(self.urls['movie_main'] % movieID + 'reviews?count=9999999&start=0')
+             
+        #cont = self._retrieve(self.urls['movie_main'] % movieID + 'reviews?count=9999999&start=0')
+
+        return self.mProxy.reviews_parser.parse(cont)
 
     def get_movie_critic_reviews(self, movieID):
         cont = self._retrieve(self.urls['movie_main'] % movieID + 'criticreviews')
