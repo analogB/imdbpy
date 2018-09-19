@@ -535,8 +535,9 @@ class IMDbHTTPAccessSystem(IMDbBase):
         
         #cont = self._retrieve(url) 
         #cont = self._retrieve(self.urls['movie_main'] % movieID + 'reviews?count=9999999&start=0')
-
-        return self.mProxy.reviews_parser.parse(self.driver.page_source)
+        output = self.mProxy.reviews_parser.parse(self.driver.page_source)
+        self.driver.close()
+        return output
 
     def get_movie_critic_reviews(self, movieID):
         cont = self._retrieve(self.urls['movie_main'] % movieID + 'criticreviews')
