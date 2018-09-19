@@ -525,7 +525,7 @@ class IMDbHTTPAccessSystem(IMDbBase):
         self.driver.get(url)
         
         p = 0
-        while self.driver.find_elements_by_css_selector('.ipl-load-more__button'):
+        while self.driver.find_elements_by_css_selector('.ipl-load-more__button') and self.driver.find_elements_by_css_selector('.ipl-load-more__button--hidden'):
             print(self.driver.find_elements_by_css_selector('.ipl-load-more__button--hidden'))
             self.driver.find_element_by_css_selector('.ipl-load-more__button').click()
             print(p)
