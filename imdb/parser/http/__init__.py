@@ -530,6 +530,7 @@ class IMDbHTTPAccessSystem(IMDbBase):
             self.driver.find_element_by_css_selector('.ipl-load-more__button').click()
             print(p)
             p+=1
+            time.sleep(1)
         
         #cont = self._retrieve(url) 
         #cont = self._retrieve(self.urls['movie_main'] % movieID + 'reviews?count=9999999&start=0')
