@@ -527,9 +527,9 @@ class IMDbHTTPAccessSystem(IMDbBase):
         driver = webdriver.Chrome("/Users/brad/Downloads/chromedriver")
         driver.get(url)
         
-        while cont.find_elements_by_css_selector('.ipl-load-more__button'):
-            cont.find_element_by_css_selector('.ipl-load-more__button').click()
-        return self.mProxy.reviews_parser.parse(cont)
+        while driver.find_elements_by_css_selector('.ipl-load-more__button'):
+            driver.find_element_by_css_selector('.ipl-load-more__button').click()
+        return driver.mProxy.reviews_parser.parse(cont)
 
     def get_movie_critic_reviews(self, movieID):
         cont = self._retrieve(self.urls['movie_main'] % movieID + 'criticreviews')
