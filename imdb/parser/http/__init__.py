@@ -526,7 +526,6 @@ class IMDbHTTPAccessSystem(IMDbBase):
         
         p = 0
         while self.driver.find_elements_by_css_selector('.ipl-load-more__button') and not self.driver.find_elements_by_css_selector('.ipl-load-more--loaded-all'):
-            print(self.driver.find_elements_by_css_selector('.ipl-load-more__button::before'))
             self.driver.find_element_by_css_selector('.ipl-load-more__button').click()
             p+=1
             time.sleep(1)
