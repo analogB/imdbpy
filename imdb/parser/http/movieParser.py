@@ -1593,6 +1593,10 @@ class DOMHTMLReviewsParser(DOMParserBase):
                         extractor=Path('.//div[@class="text show-more__control clickable"]//text()') #extractor=Path('.//div[@class="text"]//text()')
                     ),
                     Rule(
+                        key='text',
+                        extractor=Path('.//div[@class="text show-more__control"]//text()') #extractor=Path('.//div[@class="text"]//text()')
+                    ),
+                    Rule(
                         key='helpful',
                         extractor=Path('.//div[@class="actions text-muted"]/text()') #extractor=Path('.//div[@class="text-muted"]/text()[1]') 
                     ),
