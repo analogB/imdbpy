@@ -1590,10 +1590,6 @@ class DOMHTMLReviewsParser(DOMParserBase):
                 rules=[
                     Rule(
                         key='text',
-                        extractor=Path('.//div[@class="text show-more__control clickable"]//text()') #extractor=Path('.//div[@class="text"]//text()')
-                    ),
-                    Rule(
-                        key='text',
                         extractor=Path('.//div[@class="text show-more__control"]//text()') #extractor=Path('.//div[@class="text"]//text()')
                     ),
                     Rule(
