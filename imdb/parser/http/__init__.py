@@ -525,8 +525,7 @@ class IMDbHTTPAccessSystem(IMDbBase):
         self.driver = webdriver.Chrome("/Users/brad/Downloads/chromedriver")
         #self.driver.get(url)
         
-        selectLinkOpeninNewTab = Keys.chord(Keys.CONTROL,Keys.RETURN); 
-        self.driver.findElement(By.linkText("url")).sendKeys(selectLinkOpeninNewTab);
+        self.driver.findElement(By.linkText("url")).sendKeys(Keys.CONTROL+Keys.RETURN);
         
         p = 0
         while self.driver.find_elements_by_css_selector('.ipl-load-more__button') and not self.driver.find_elements_by_css_selector('.ipl-load-more--loaded-all'):
