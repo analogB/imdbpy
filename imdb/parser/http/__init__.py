@@ -36,6 +36,7 @@ from imdb.utils import analyze_title
 from imdb._exceptions import IMDbDataAccessError, IMDbParserError
 
 from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
 import time
 
 from . import (
