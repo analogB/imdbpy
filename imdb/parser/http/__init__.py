@@ -521,15 +521,18 @@ class IMDbHTTPAccessSystem(IMDbBase):
         return self.mProxy.soundtrack_parser.parse(cont)
 
     def get_movie_reviews(self, movieID):
-        url = self.urls['movie_main'] % movieID + 'reviews'
+        url = "https://www.imdb.com/ap/signin?openid.pape.max_auth_age=0&openid.return_to=https%3A%2F%2Fwww.imdb.com%2Fap-signin-handler&openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.assoc_handle=imdb_us&openid.mode=checkid_setup&siteState=eyJvcGVuaWQuYXNzb2NfaGFuZGxlIjoiaW1kYl91cyIsInJlZGlyZWN0VG8iOiJodHRwczovL3d3dy5pbWRiLmNvbS90aXRsZS90dDMzMTUzNDIvcmV2aWV3cz9yZWZfPWxnbl9sZ25fbG9naW4ifQ&openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&tag=imdbtag_reg-20"
         self.driver = webdriver.Chrome("/Users/brad/Downloads/chromedriver")
         self.driver.get(url)
         
-        u = driver.find_element_by_name('userName')
-        u.send_keys('analogB')
+        u = driver.find_element_by_name('email')
+        u.send_keys('bradrogersau@gmail.com')
         p = driver.find_element_by_name('password')
         p.send_keys('password')
         p.send_keys(Keys.RETURN)
+        
+        url = self.urls['movie_main'] % movieID + 'reviews'
+        self.driver.get(url)
 
         press = 0
         while self.driver.find_elements_by_css_selector('.ipl-load-more__button') and not self.driver.find_elements_by_css_selector('.ipl-load-more--loaded-all'):
