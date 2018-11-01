@@ -521,8 +521,11 @@ class IMDbHTTPAccessSystem(IMDbBase):
 
     def get_movie_reviews(self, movieID):
         url = self.urls['movie_main'] % movieID + 'reviews'
-        self.driver = webdriver.Chrome("/Users/brad/Downloads/chromedriver")
-        self.driver.get(url)
+        #self.driver = webdriver.Chrome("/Users/brad/Downloads/chromedriver")
+        #self.driver.get(url)
+        
+        String selectLinkOpeninNewTab = Keys.chord(Keys.CONTROL,Keys.RETURN); 
+        self.driver.findElement(By.linkText("url")).sendKeys(selectLinkOpeninNewTab);
         
         p = 0
         while self.driver.find_elements_by_css_selector('.ipl-load-more__button') and not self.driver.find_elements_by_css_selector('.ipl-load-more--loaded-all'):
