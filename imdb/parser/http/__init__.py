@@ -533,6 +533,7 @@ class IMDbHTTPAccessSystem(IMDbBase):
         
         url = self.urls['movie_main'] % movieID + 'reviews'
         self.driver.get(url)
+        time.sleep(10)
 
         press = 0
         while self.driver.find_elements_by_css_selector('.ipl-load-more__button') and not self.driver.find_elements_by_css_selector('.ipl-load-more--loaded-all'):
