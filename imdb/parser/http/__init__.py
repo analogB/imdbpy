@@ -525,9 +525,9 @@ class IMDbHTTPAccessSystem(IMDbBase):
         self.driver = webdriver.Chrome("/Users/brad/Downloads/chromedriver")
         self.driver.get(url)
         
-        u = driver.find_element_by_name('email')
+        u = self.driver.find_element_by_name('email')
         u.send_keys('bradrogersau@gmail.com')
-        p = driver.find_element_by_name('password')
+        p = self.driver.find_element_by_name('password')
         p.send_keys('password')
         p.send_keys(Keys.RETURN)
         
