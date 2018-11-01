@@ -1589,9 +1589,12 @@ class DOMHTMLReviewsParser(DOMParserBase):
                 foreach='//div[@class="review-container"]',
                 rules=[
                     Rule(
-                        key='text',
-                        extractor=Path('.//div[@class="text show-more__control"]//text()'), #extractor=Path('.//div[@class="text"]//text()'),
+                        key='text1',
                         extractor=Path('.//div[@class="text show-more__control clickable"]//text()') #extractor=Path('.//div[@class="text"]//text()')
+                    ),
+                    Rule(
+                        key='text2',
+                        extractor=Path('.//div[@class="text show-more__control"]//text()'), #extractor=Path('.//div[@class="text"]//text()'),
                     ),
                     Rule(
                         key='helpful',
@@ -1615,7 +1618,7 @@ class DOMHTMLReviewsParser(DOMParserBase):
                     )
                 ],
                 transform=lambda x: ({
-                    'content': x.get('text', '').replace('\n', ' ').replace('  ', ' ').strip(),
+                    'content': x.get('text1', '').replace('\n', ' ').replace('  ', ' ').strip() + x.get('text2', '').replace('\n', ' ').replace('  ', ' ').strip(),
                     'helpful': [int(s) for s in x.get('helpful', '').split() if s.isdigit()],
                     'title': x.get('title', '').strip(),
                     'author': analyze_imdbid(x.get('author')),
